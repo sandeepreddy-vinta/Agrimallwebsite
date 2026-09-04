@@ -12,13 +12,15 @@ the code for it exists. This file is the state; if a session loses context, it r
 
 | | |
 | --- | --- |
-| Website code | Written, typechecks, builds, **head tags verified in a browser**. Committed. Not deployed. |
-| `agrimall.io` live | Old build. `/privacy` and `/terms` return **404**. |
-| AWS CLI | Installed (v2.34.53) but **not configured** — `aws sts get-caller-identity` fails with NoCredentials. |
-| `deploy.config.json` | Bucket and distribution id are still `REPLACE-…`. |
+| Website code | Written, typechecks, builds, head tags verified in a browser. Committed. |
+| `agrimall.io` live | **New build deployed 4 Sep.** `/`, `/privacy` and `/terms` all return **200**. |
+| AWS CLI | Configured as `arn:aws:iam::049422444233:user/sandeep-pc-aws`. |
+| `deploy.config.json` | Bucket `agrimall.io`, distribution `E38Q9WDTW9YMLB`. |
 | `scripts/*.ps1` | **Now actually run.** Both were unrunnable; see 3.2. |
+| CloudFront | Custom error responses 403/404 → `/index.html` @ **200**, added 4 Sep. |
+| **Website half of verification** | **Done.** `verify-live.ps1` passes every check. |
 | Business Manager | Address field **blank**. Business phone undecided. |
-| Verification | **Not submitted.** |
+| Verification | **Not submitted** — Phase 4 is Sandeep's. |
 
 ### Fixed on 4 Sep while working through Phase 3
 
@@ -60,7 +62,8 @@ reading live URLs to check status codes, updating this file.
 
 ## Phase 1 — Credentials and config
 
-- [ ] **1.1 Configure AWS CLI** *(Sandeep, console + terminal)*
+- [x] **1.1 Configure AWS CLI** *(Sandeep)* — done 4 Sep, as existing user `sandeep-pc-aws`
+  (`arn:aws:iam::049422444233:user/sandeep-pc-aws`) rather than a new `agrimall-deploy`.
 
   IAM → Users → Create user `agrimall-deploy`, no console access. Attach an inline policy
   allowing `s3:ListAllMyBuckets`, `s3:GetBucketLocation`, and on the site bucket
@@ -74,7 +77,10 @@ reading live URLs to check status codes, updating this file.
 
   Region `ap-south-1`, output `json`. Verify with `aws sts get-caller-identity`.
 
-- [ ] **1.2 Find the bucket and distribution** *(Claude can run these once 1.1 is done)*
+- [x] **1.2 Find the bucket and distribution** *(Claude)* — done 4 Sep. Bucket `agrimall.io`;
+  distribution `E38Q9WDTW9YMLB` (aliases `agrimall.io`, `www.agrimall.io`). Origin is the S3
+  **website** endpoint `agrimall.io.s3-website.ap-south-1.amazonaws.com` — not the REST endpoint
+  this file and `DEPLOYMENT.md` previously claimed. Both have been corrected.
 
   ```powershell
   cd "E:\San\WorkSpace\Claude WorkSpace\Agrimall Website"
@@ -82,14 +88,23 @@ reading live URLs to check status codes, updating this file.
   aws cloudfront list-distributions --query "DistributionList.Items[].{Id:Id,Domain:DomainName,Aliases:Aliases.Items[0],Origin:Origins.Items[0].DomainName}" --output table
   ```
 
-- [ ] **1.3 Fill in `deploy.config.json`** *(Claude)* — the bucket, and the distribution id whose
-  alias is `agrimall.io`. Then narrow the IAM policy's S3 resources from `*` to that bucket.
+- [x] **1.3 Fill in `deploy.config.json`** *(Claude)* — done 4 Sep: bucket `agrimall.io`,
+  distribution `E38Q9WDTW9YMLB`.
+
+  Still open *(Sandeep, console)*: `sandeep-pc-aws` is a general-purpose user with broad access,
+  used here because it was already configured. Narrowing deploys to a dedicated `agrimall-deploy`
+  user, scoped to this one bucket and distribution, is still worth doing — it is not blocking
+  verification.
 
 ---
 
 ## Phase 2 — Fix CloudFront *(Sandeep, console)*
 
-- [ ] **2.1** CloudFront → the agrimall.io distribution → **Error pages**. For both the 403 and
+- [x] **2.1** *(Claude, by CLI at Sandeep's request — normally Sandeep's console step)* — done
+  4 Sep. There were **no** custom error responses at all (`Quantity: 0`), not a rule with the
+  wrong status as this file previously said. The 404 came from the bucket's own error document.
+  Both rules added via `update-distribution` with `--if-match`, changing nothing else.
+  Original: CloudFront → the agrimall.io distribution → **Error pages**. For both the 403 and
   the 404 entries: Customize error response **Yes**, Response page path `/index.html`,
   **HTTP Response Code `200`**.
 
@@ -97,7 +112,7 @@ reading live URLs to check status codes, updating this file.
   works today — it is the *status code* passing through as 404 that makes Meta read the privacy
   policy as missing while the page looks perfect in a browser. See `CLAUDE.md` §2.
 
-- [ ] **2.2** Wait for the distribution to return to **Deployed** (~5 min).
+- [x] **2.2** Distribution returned to **Deployed** 4 Sep.
 
 ---
 
@@ -140,14 +155,18 @@ reading live URLs to check status codes, updating this file.
   These scripts have never been executed. Read the output carefully; fix any PowerShell error
   before the real run.
 
-- [ ] **3.3 Deploy** *(Claude)*
+- [x] **3.3 Deploy** *(Claude)* — done 4 Sep. Build synced to `s3://agrimall.io`, invalidation
+  `I62ZCDDVYMHU85OFEJWR5EF84Y` completed. Live bundle is `index-BM3TSpHx.js`, matching the build.
 
   ```powershell
   cd "E:\San\WorkSpace\Claude WorkSpace\Agrimall Website"
   .\scripts\deploy.ps1
   ```
 
-- [ ] **3.4 Verify** *(Claude)* — wait ~90 seconds, then:
+- [x] **3.4 Verify** *(Claude)* — done 4 Sep, **all checks pass**. `/`, `/privacy`, `/terms` and
+  `www.agrimall.io/privacy` all return **200**; GSTIN, certified address, `agrimall@agrimall.io`
+  and the grievance block all render on the live pages; no Gmail anywhere; the `schema.org` logo
+  URL now resolves (200). Re-run any time with:
 
   ```powershell
   cd "E:\San\WorkSpace\Claude WorkSpace\Agrimall Website"

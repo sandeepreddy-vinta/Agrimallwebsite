@@ -1,7 +1,7 @@
 {
   "$comment": "No secrets here — AWS credentials live in %USERPROFILE%\\.aws\\credentials. Fill these in from: aws s3 ls / aws cloudfront list-distributions",
-  "bucket": "REPLACE-WITH-BUCKET-NAME",
-  "distributionId": "REPLACE-WITH-DISTRIBUTION-ID",
+  "bucket": "agrimall.io",
+  "distributionId": "E38Q9WDTW9YMLB",
   "region": "ap-south-1",
   "siteUrl": "https://agrimall.io",
   "routes": ["/", "/privacy", "/terms"]

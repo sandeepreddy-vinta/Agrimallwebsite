@@ -170,11 +170,13 @@ AWS Console → **CloudFront** → **Create Distribution**
 | **Custom SSL certificate** | the ACM certificate from Step 2 |
 | **Default root object** | `index.html` |
 
-> **Why the REST origin breaks `/privacy`:** with the
-> `…s3.ap-south-1.amazonaws.com` origin, CloudFront talks to S3's REST API,
-> which knows nothing about the "Error document" setting from Step 1.2. A
-> request for `/privacy` finds no such object and S3 answers 403/404. Step 3.3
-> is what fixes it.
+> **Why `/privacy` 404s without Step 3.3:** the live distribution actually uses
+> the S3 **website** endpoint (`agrimall.io.s3-website.ap-south-1.amazonaws.com`),
+> so the "Error document" from Step 1.2 does apply — S3 returns `index.html`,
+> and the app renders. But an error document is served with **status 404**, and
+> that status is what a reviewer's tooling reads. Step 3.3 rewrites it to 200.
+> (Had the origin been the REST endpoint, S3 would answer `NoSuchKey` and Step
+> 3.3 would still be the fix.)
 
 ### 3.2 Deploy
 Wait 5–15 minutes, then test the `d1234abcdef.cloudfront.net` URL.
@@ -188,18 +190,18 @@ Distribution → **Error pages** tab → **Create custom error response**, twice
 | `403 Forbidden` | Yes | `/index.html` | `200` |
 | `404 Not Found` | Yes | `/index.html` | `200` |
 
-**Current state of the live distribution (checked 28 Aug 2026).** The fallback
-is already half-configured: `https://agrimall.io/privacy` serves `index.html`
-and the React app renders its "404 — Oops! Page not found" screen. But the
-response still carries **HTTP status 404**, not 200.
+**State of the live distribution.** Checked 4 Sep 2026 via
+`aws cloudfront get-distribution-config`: `CustomErrorResponses` was
+`{"Quantity": 0}` — there were **no** rules at all. The earlier note here, that
+the rule existed and merely passed the wrong status through, was wrong; the 404
+came from the bucket's error document, not from a CloudFront rule.
 
-That distinction is invisible in a browser and decisive for a reviewer. Once
-`/privacy` is a real route in the build it will *look* right to a human, while
-Meta's automated check, Google and any `curl -I` still see a 404 and treat the
-privacy policy as missing.
+Both rules were added on 4 Sep 2026 with response code `200`. The distinction
+they fix is invisible in a browser and decisive for a reviewer: the page looks
+right to a human while Meta's automated check, Google and any `curl -I` see a
+404 and treat the privacy policy as missing.
 
-So the change needed is not to add the rule but to **set the HTTP response code
-on the existing 403 and 404 rules to `200`**. Confirm with:
+Confirm with:
 
 ```bash
 curl -I https://agrimall.io/privacy      # must be HTTP/2 200, not 404

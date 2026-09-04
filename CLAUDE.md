@@ -48,19 +48,24 @@ The values are transcribed from GST REG-06 (issued 08/05/2024), GSTIN `37AELFS03
 `src/App.tsx` declares `/`, `/privacy`, `/terms` and a `*` catch-all. Client-side routing means
 there is no `privacy` object in the bucket.
 
-CloudFront's origin is the **S3 REST endpoint** (`…s3.ap-south-1.amazonaws.com`), which ignores
-the bucket's "Error document" setting entirely. The distribution's **custom error responses** are
-what make deep links work:
+CloudFront's origin is the **S3 website endpoint**
+(`agrimall.io.s3-website.ap-south-1.amazonaws.com`), and the bucket's "Error document" is set to
+`index.html`. So S3 already answers `/privacy` with the app's HTML — **but with status 404**,
+because that is what an error document is. The distribution's **custom error responses** are what
+turn that into a 200:
 
 | HTTP error code | Response page path | HTTP response code |
 | --- | --- | --- |
 | 403 | `/index.html` | **200** |
 | 404 | `/index.html` | **200** |
 
-**The response code is the trap.** As of 28 Aug 2026 the rewrite is configured but passes the
-original 404 status through, so `agrimall.io/privacy` renders the app and returns 404. It looks
-correct in a browser and reads as missing to Meta, Google and `curl -I`. Check with
+**The response code is the trap.** The page renders perfectly in a browser either way; only the
+status line differs, and that is what Meta, Google and `curl -I` read. Check with
 `scripts/verify-live.ps1`, never by eye.
+
+Configured 4 Sep 2026 (distribution `E38Q9WDTW9YMLB`, bucket `agrimall.io`). Before that there
+were **no** custom error responses at all — earlier notes in this file and in `DEPLOYMENT.md`
+said the rule existed and merely passed the wrong status through, which was not the case.
 
 ### 3. `index.html` is what crawlers see
 
