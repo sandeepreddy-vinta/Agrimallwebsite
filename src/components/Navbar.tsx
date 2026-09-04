@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, Youtube, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { COMPANY } from "@/config/company";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Solutions", href: "#solutions" },
-  { name: "Products", href: "#products" },
-  { name: "Team", href: "#team" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/#home" },
+  { name: "About", href: "/#about" },
+  { name: "Solutions", href: "/#solutions" },
+  { name: "Products", href: "/#products" },
+  { name: "Team", href: "/#team" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export const Navbar = () => {
@@ -30,23 +31,23 @@ export const Navbar = () => {
       <div className="bg-primary text-primary-foreground py-2 px-4 hidden md:block">
         <div className="container mx-auto flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+919493636363" className="flex items-center gap-2 hover:text-secondary transition-colors">
+            <a href={`tel:${COMPANY.phoneHref}`} className="flex items-center gap-2 hover:text-secondary transition-colors">
               <Phone className="w-4 h-4" />
-              +91 9493636363
+              {COMPANY.phoneDisplay}
             </a>
-            <a href="mailto:sreemohanagrimall@gmail.com" className="flex items-center gap-2 hover:text-secondary transition-colors">
+            <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-2 hover:text-secondary transition-colors">
               <Mail className="w-4 h-4" />
-              sreemohanagrimall@gmail.com
+              {COMPANY.email}
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+            <a href={COMPANY.social.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
               <Youtube className="w-5 h-5" />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+            <a href={COMPANY.social.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
               <Facebook className="w-5 h-5" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+            <a href={COMPANY.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
               <Instagram className="w-5 h-5" />
             </a>
           </div>
@@ -65,7 +66,7 @@ export const Navbar = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="#home" className="flex items-center">
+            <a href="/#home" className="flex items-center">
               <img
                 src="/logo.png"
                 alt="Sree Mohan Agri Mall"
@@ -89,7 +90,7 @@ export const Navbar = () => {
 
             {/* CTA Button */}
             <div className="hidden lg:flex items-center gap-4">
-              <a href="https://play.google.com/store/apps/details?id=com.agri_mall" target="_blank" rel="noopener noreferrer">
+              <a href={COMPANY.playStoreUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="default" className="bg-hero-gradient hover:opacity-90 transition-opacity">
                   Download App
                 </Button>
@@ -126,7 +127,7 @@ export const Navbar = () => {
                     {link.name}
                   </a>
                 ))}
-                <a href="https://play.google.com/store/apps/details?id=com.agri_mall" target="_blank" rel="noopener noreferrer" className="w-full">
+                <a href={COMPANY.playStoreUrl} target="_blank" rel="noopener noreferrer" className="w-full">
                   <Button variant="default" className="bg-hero-gradient w-full mt-4">
                     Download App
                   </Button>

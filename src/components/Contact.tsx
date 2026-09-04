@@ -6,24 +6,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { COMPANY } from "@/config/company";
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Our Location",
-    details: "15/164, Balaji Complex Gosha Hospital Road, Adoni-518301, Kurnool District, A.P.",
+    details: COMPANY.addressOneLine,
   },
   {
     icon: Phone,
     title: "Call Us",
-    details: "+91 9493636363",
-    link: "tel:+919493636363",
+    details: COMPANY.phoneDisplay,
+    link: `tel:${COMPANY.phoneHref}`,
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: "sreemohanagrimall@gmail.com",
-    link: "mailto:sreemohanagrimall@gmail.com",
+    details: COMPANY.email,
+    link: `mailto:${COMPANY.email}`,
   },
   {
     icon: Clock,

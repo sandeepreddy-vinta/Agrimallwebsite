@@ -1,4 +1,5 @@
-import { Helmet } from "react-helmet-async";
+import { useHead } from "@/hooks/use-head";
+import { COMPANY } from "@/config/company";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { SocialProof } from "@/components/SocialProof";
@@ -11,50 +12,38 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
+  // Keep the title and description here in step with the static tags in
+  // index.html — those are what a crawler reads before React mounts.
+  useHead({
+    title: `${COMPANY.legalName} | Quality Agricultural Products for Indian Farmers`,
+    description:
+      "Sree Mohan Agri Mall supplies seeds, crop protection, plant nutrition and farm equipment to farmers across Andhra Pradesh, Telangana and Karnataka, backed by Jyothir Agri Science and 16/7 agronomy support.",
+    canonical: "https://agrimall.io/",
+    keywords:
+      "agricultural products, farming solutions, pesticides, cotton seeds, Jyothir Agri Science, Indian farmers",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: COMPANY.legalName,
+      url: "https://agrimall.io",
+      logo: "https://agrimall.io/logo.png",
+      description: "Quality agricultural products for Indian farmers",
+      address: {
+        "@type": "PostalAddress",
+        ...COMPANY.postalAddress,
+      },
+      email: COMPANY.email,
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: COMPANY.phoneDisplay,
+        contactType: "customer service",
+        availableLanguage: ["English", "Hindi", "Telugu"],
+      },
+    },
+  });
+
   return (
     <>
-      <Helmet>
-        <title>Sree Mohan Agri Mall | Quality Agricultural Products for Indian Farmers</title>
-        <meta
-          name="description"
-          content="Sree Mohan Agri Mall provides premium quality agricultural products backed by Jyothir Agri Science. Solution-based approach with 16/7 support for farmers."
-        />
-        <meta name="keywords" content="agricultural products, farming solutions, pesticides, cotton seeds, Jyothir Agri Science, Indian farmers" />
-        <link rel="canonical" href="https://agrimall.io/" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Sree Mohan Agri Mall | Quality Agricultural Products" />
-        <meta property="og:description" content="Premium agricultural products with solution-based approach. Backed by Jyothir Agri Science quality." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://agrimall.io/" />
-
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Sree Mohan Agri Mall",
-            "url": "https://agrimall.io",
-            "logo": "https://agrimall.io/img/logo.png",
-            "description": "Quality agricultural products for Indian farmers",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "15/164, Balaji Complex Gosha Hospital Road",
-              "addressLocality": "Adoni",
-              "addressRegion": "Andhra Pradesh",
-              "postalCode": "518301",
-              "addressCountry": "IN"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+91-9493636363",
-              "contactType": "customer service",
-              "availableLanguage": ["English", "Hindi", "Telugu"]
-            }
-          })}
-        </script>
-      </Helmet>
-
       <main className="min-h-screen">
         <Navbar />
         <Hero />

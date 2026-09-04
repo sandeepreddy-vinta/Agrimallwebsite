@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { COMPANY } from "@/config/company";
 
 // Animated Icon Components with Flaticon-style colorful designs
 const AnimatedQualityIcon = () => (
@@ -212,7 +213,7 @@ const solutions = [
   {
     Icon: AnimatedDeliveryIcon,
     title: "Online Door Delivery",
-    description: "Order via call at 9493636363 or online and get products delivered directly to your doorstep.",
+    description: `Order via call at ${COMPANY.phoneDisplay} or online and get products delivered directly to your doorstep.`,
     bgColor: "bg-orange-50",
     borderColor: "border-orange-200",
   },
