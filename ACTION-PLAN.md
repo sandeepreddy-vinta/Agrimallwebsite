@@ -198,10 +198,21 @@ reading live URLs to check status codes, updating this file.
 
   Character-for-character from the GST certificate. A reviewer compares these directly.
 
-- [ ] **4.2 Business phone** — use `+91 94936 36363` **unless** that number is registered on
-  WhatsApp Cloud API. Check in WhatsApp Manager which number belongs to WABA
-  `102097146277644`; a Cloud API number cannot receive an ordinary call or SMS, so Meta's
-  confirmation would never arrive. If it is that number, use the Adoni landline instead.
+- [x] **4.2 Business phone** — decided 4 Sep. Use the **office voice line `+91 92814 45083`**.
+
+  `+91 94936 36363` turned out to be the WhatsApp Cloud API number for WABA `102097146277644`,
+  so it takes no ordinary call or SMS — exactly the case this step was written to catch. Worse,
+  the site was publishing it as a `tel:` link in **eight** places, including the Grievance
+  Officer contact that India's IT Rules require to be reachable.
+
+  The site now separates the two: `phone*` is the voice line, `whatsapp*` is the Cloud API
+  number, linked as `wa.me/919493636363` and never as `tel:`. `scripts/deploy.ps1` refuses to
+  deploy if `phoneHref` is ever set to the WhatsApp number again.
+
+  The SIM does not need to be in the firm's name — Meta verifies documents, not SIM ownership,
+  and the GST certificate carries the firm's name. What matters is that a human answers it in
+  business hours. **Brief whoever mans it before submitting:** Meta may place a verification
+  call, and an unanswered or misdirected call fails the same way a wrong number does.
 
 - [ ] **4.3 App dashboard** — app `653496656184174` → Settings → Basic. Privacy Policy URL
   `https://agrimall.io/privacy`, Terms of Service URL `https://agrimall.io/terms`. The app

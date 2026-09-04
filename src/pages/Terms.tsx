@@ -46,6 +46,12 @@ const Terms = () => {
                     {COMPANY.phoneDisplay}
                   </a>,
                 ],
+                [
+                  "WhatsApp",
+                  <a href={COMPANY.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline">
+                    {COMPANY.whatsappDisplay}
+                  </a>,
+                ],
               ]}
             />
             <p>

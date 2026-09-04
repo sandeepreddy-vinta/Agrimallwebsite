@@ -78,13 +78,34 @@ $company = Get-Content (Join-Path $root "src\config\company.ts") -Raw
 if ($company -match "\[NAME\]") {
     throw "src/config/company.ts still contains [NAME]. Set grievanceOfficer before deploying."
 }
+
+# The WhatsApp Cloud API number cannot receive a voice call or an SMS. If it
+# ever ends up in phoneHref it becomes a tel: link in eight places, including
+# the grievance officer contact that India's IT Rules require to be reachable.
+if ($company -match 'phoneHref:\s*"\+?919493636363"') {
+    throw "src/config/company.ts: phoneHref is the WhatsApp Cloud API number, which takes no calls. Use the office voice line."
+}
+if ($company -match 'phone(Display|Href):\s*"[^"]*[Xx]{3}') {
+    throw "src/config/company.ts: phone number still contains a placeholder."
+}
 Write-Host "  company.ts   : no placeholders" -ForegroundColor Green
 
 # ---- build -----------------------------------------------------------------
 if (-not $SkipBuild) {
     Write-Host "`n=== Build ===" -ForegroundColor Cyan
     if ($PSCmdlet.ShouldProcess("dist/", "npm run build")) {
-        npm run build
+        # npm writes ordinary notices (the browserslist warning, for one) to
+        # stderr. If the caller captures this script's output, PowerShell turns
+        # each of those lines into an ErrorRecord, and "Stop" makes it fatal --
+        # a successful build then looks like a failed one. Judge the build by
+        # its exit code, which is the only thing that actually says.
+        try {
+            $ErrorActionPreference = "Continue"
+            npm run build
+        }
+        finally {
+            $ErrorActionPreference = "Stop"
+        }
         if ($LASTEXITCODE -ne 0) { throw "Build failed." }
     }
 }

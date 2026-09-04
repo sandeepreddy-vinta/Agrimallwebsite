@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { MapPin, Phone, Mail, Send, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Send, Clock, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,6 +19,15 @@ const contactInfo = [
     title: "Call Us",
     details: COMPANY.phoneDisplay,
     link: `tel:${COMPANY.phoneHref}`,
+  },
+  {
+    // The WhatsApp number is Cloud API only — it cannot take a voice call, so
+    // it must never appear as a tel: link. See src/config/company.ts.
+    icon: MessageCircle,
+    title: "WhatsApp Us",
+    details: COMPANY.whatsappDisplay,
+    link: COMPANY.whatsappUrl,
+    external: true,
   },
   {
     icon: Mail,
@@ -97,7 +106,13 @@ export const Contact = () => {
                 <div>
                   <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
                   {info.link ? (
-                    <a href={info.link} className="text-muted-foreground hover:text-accent transition-colors">
+                    <a
+                      href={info.link}
+                      {...("external" in info && info.external
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="text-muted-foreground hover:text-accent transition-colors"
+                    >
                       {info.details}
                     </a>
                   ) : (

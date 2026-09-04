@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Youtube, Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
+import { Youtube, Facebook, Instagram, Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { COMPANY } from "@/config/company";
 
 const quickLinks = [
@@ -146,6 +146,18 @@ export const Footer = () => {
                 <a href={`tel:${COMPANY.phoneHref}`} className="flex gap-3 items-center text-primary-foreground/80 hover:text-secondary transition-colors">
                   <Phone className="w-5 h-5 text-secondary" />
                   {COMPANY.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={COMPANY.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-3 items-center text-primary-foreground/80 hover:text-secondary transition-colors"
+                >
+                  <MessageCircle className="w-5 h-5 text-secondary" />
+                  {COMPANY.whatsappDisplay}
+                  <span className="sr-only"> on WhatsApp</span>
                 </a>
               </li>
               <li>

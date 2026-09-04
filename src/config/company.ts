@@ -56,8 +56,24 @@ export const COMPANY = {
   // Meta sends the verification confirmation code to an address on the
   // website's own domain, and a Gmail in the footer works against that.
   email: "agrimall@agrimall.io",
-  phoneDisplay: "+91 94936 36363",
-  phoneHref: "+919493636363",
+
+  // TWO NUMBERS, AND THEY ARE NOT INTERCHANGEABLE.
+  //
+  // phone* is the office voice line. It is the number to publish as "call us",
+  // to give as the grievance officer's telephone, and to enter in Meta Business
+  // Manager -> Business info. A human must answer it in business hours: a
+  // reviewer may dial the number shown on the site, and India's IT Rules expect
+  // the grievance contact to actually be reachable.
+  //
+  // whatsapp* is the WhatsApp Cloud API number for WABA 102097146277644. It
+  // CANNOT receive an ordinary call or SMS — it only exists inside WhatsApp.
+  // Never label it "call us" and never put it in a tel: link. Until Sep 2026
+  // the site did exactly that, in eight places including the grievance block.
+  phoneDisplay: "+91 92814 45083",
+  phoneHref: "+919281445083",
+
+  whatsappDisplay: "+91 94936 36363",
+  whatsappUrl: "https://wa.me/919493636363",
 
   grievanceOfficer: "Sandeep Reddy Vinta",
 
