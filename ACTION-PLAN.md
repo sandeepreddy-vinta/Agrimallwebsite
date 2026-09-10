@@ -260,18 +260,31 @@ reading live URLs to check status codes, updating this file.
   which reproduce only on the deployed site. Verified live in a real browser: the URL now opens
   at "9. Your rights".
 
-- [ ] **4.4 Submit** — Security Centre → Start Verification → India → Partnership → upload the
-  GST REG-06 PDF, document type **GST certificate** → confirmation code by **email** to
-  `agrimall@agrimall.io`.
+- [x] **4.4 Submit** — **submitted 10 Sep 2026.** Meta quoted ~2 business days, so an outcome is
+  expected around **Mon 14 Sep 2026**; the documented range runs to 14 days (24 Sep).
 
-  The domain match matters: the code must go to an address on the website's own domain. Never a
-  Gmail address. Sandeep must do this personally as an authorised representative — a partner or
-  tech provider cannot submit on his behalf.
+- [ ] **4.5 Wait** — in progress. Watch `agrimall@agrimall.io` (spam included) and Security Centre.
 
-- [ ] **4.5 Wait** — usually 2–5 business days, up to 14. Watch `agrimall@agrimall.io` and the
-  Security Centre.
-
----
+  > ### FREEZE UNTIL THE OUTCOME LANDS
+  >
+  > Everything a reviewer compares is now consistent across the GST certificate, `company.ts`,
+  > the live site and Business Manager. **Any edit to those risks resetting or failing the
+  > review.** Until Security Centre reports an outcome:
+  >
+  > - **Do not deploy anything that touches entity details** — `src/config/company.ts` above all.
+  >   Unrelated fixes are fine only if `scripts/verify-live.ps1` still passes afterwards.
+  > - **Do not edit Business Manager → Business info**: legal name, address, phone, website.
+  > - **Do not unlink the primary page** or remove/re-add the business portfolio.
+  > - **Do not start domain verification, display-name approval or app review** in parallel. They
+  >   are listed below and after approval is soon enough.
+  > - **Keep `agrimall.io` up.** If the site 404s or goes down while a reviewer checks it, that
+  >   is a fail. `scripts/verify-live.ps1` is the check.
+  > - **Keep `+91 92814 45083` answerable** in business hours, not diverted or engaged. Brief
+  >   whoever mans it that a Meta verification call may come.
+  >
+  > Safe to do meanwhile: the two outstanding App Dashboard fields (App domains `agrimall.io`,
+  > Category **Business and pages**). They are app configuration and form no part of the
+  > business verification record — though waiting two days costs nothing either.
 
 ## Phase 5 — After approval *(Sandeep)*
 
