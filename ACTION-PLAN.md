@@ -248,12 +248,17 @@ reading live URLs to check status codes, updating this file.
 
   **Still wrong on that page, left for a decision:**
 
-  | Field | Current | Suggested |
+  | Field | State on 10 Sep | |
   | --- | --- | --- |
-  | Data deletion instructions URL | `https://www.facebook.com/` | `https://agrimall.io/privacy#your-rights` — §9 covers erasure and gives the contact route |
-  | Contact email | `vin.sandeepreddy@gmail.com` | `agrimall@agrimall.io` — another Gmail in the Meta record |
-  | App domains | *(empty)* | `agrimall.io` |
-  | Category | *(empty)* | may be required before the app can go Live (5.2) |
+  | Data deletion instructions URL | `https://agrimall.io/privacy#your-rights` | **done** |
+  | Contact email | `agrimall@agrimall.io` | **done** |
+  | App domains | *(still empty)* | set to `agrimall.io` |
+  | Category | *(still empty)* | pick **Business and pages** — likely required before 5.2 |
+
+  The deletion URL needed a code fix to be worth anything: the fragment did not work.
+  `src/components/ScrollToHash.tsx` fixes it — see the three bugs documented in that file, two of
+  which reproduce only on the deployed site. Verified live in a real browser: the URL now opens
+  at "9. Your rights".
 
 - [ ] **4.4 Submit** — Security Centre → Start Verification → India → Partnership → upload the
   GST REG-06 PDF, document type **GST certificate** → confirmation code by **email** to
