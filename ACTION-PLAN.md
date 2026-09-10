@@ -192,15 +192,16 @@ reading live URLs to check status codes, updating this file.
 
 ## Phase 4 — Meta *(Sandeep)*
 
-> **PAUSED 4 Sep 2026 — Sandeep is out of station, back the week of 7 Sep 2026.**
-> He will do Phase 4 himself on return. **Do not start, prompt for, or attempt any of it.**
+> **RESUMED 10 Sep 2026.** Sandeep is back and has phone access on `+91 92814 45083`.
 >
-> Nothing is blocking it: the website half is finished, deployed and verified, and the repo is
-> pushed. 4.1 and 4.2 have their exact values below — 4.2 is decided, the phone is
-> `+91 92814 45083`. Resume by reading 4.1 downwards.
+> **Preflight re-run 10 Sep 2026 — GO.** Nothing drifted over the week: `verify-live.ps1` passes
+> all checks; `/`, `/privacy`, `/terms` all 200; CloudFront still carries both 403/404 → 200
+> rules and reads `Deployed`; the deployed bundle `index-C36fWvwP.js` is byte-identical to a
+> fresh build, so there is nothing unshipped; repo clean and level with `origin/main`.
+> `agrimall.io` MX points at Google Workspace, so the confirmation mailbox can receive.
 >
-> If a later session picks this up: the one thing worth re-running first is
-> `scripts/verify-live.ps1`, to confirm the live site is still green before he submits.
+> **4.1 to 4.5 below are Sandeep's alone** — Business Manager, the app dashboard and the submit
+> button. Claude does not attempt them.
 
 - [ ] **4.1 Business info** — Business settings → Business info. Legal name
   `SREE MOHAN AGRI MALL`; street `15/164, Balaji Complex, Gosha Hospital Road`; address line 2
