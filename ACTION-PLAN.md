@@ -203,14 +203,25 @@ reading live URLs to check status codes, updating this file.
 > **4.1 to 4.5 below are Sandeep's alone** — Business Manager, the app dashboard and the submit
 > button. Claude does not attempt them.
 
-- [ ] **4.1 Business info** — Business settings → Business info. Legal name
-  `SREE MOHAN AGRI MALL`; street `15/164, Balaji Complex, Gosha Hospital Road`; address line 2
+- [x] **4.1 Business info** — done and verified 10 Sep 2026 against the GST certificate and the
+  live Business Manager page (not a screenshot). Entered as:
+  street `15/164, Balaji Complex, Gosha Hospital Road`; line 2
   `Basement Part A, Part B and First Floor Part G`; city `Adoni`; state `Andhra Pradesh`;
-  postal code `518301`; country `India`; website `https://agrimall.io`.
+  postal `518301`; country `India`; website `https://agrimall.io/`.
 
-  Character-for-character from the GST certificate. A reviewer compares these directly.
+  Four errors were caught and corrected on the first pass: `Gosha Hospital Raod` (typo), a
+  prefix `Upstairs,` that contradicted the certificate's basement/first-floor premises, the
+  premises detail missing entirely, and `Adoni` duplicated into the street line.
 
-- [x] **4.2 Business phone** — decided 4 Sep. Use the **office voice line `+91 92814 45083`**.
+  Primary page now linked as **Mohan Agri Mall - Telugu**, matching `COMPANY.social.facebook`.
+
+  Certificate read direct from `New SMAM AP 2024 GST (1).pdf`: GSTIN `37AELFS0346C1Z5`,
+  Constitution `Partnership`, issued `08/05/2024`, District `Kurnool`. Annexure B lists
+  **SANDEEP REDDY VINTA** as a Managing/Authorized Partner — which is what makes 4.4 his to
+  submit — alongside ADAPA TEJASWINI.
+
+- [x] **4.2 Business phone** — decided 4 Sep, **entered and verified live 10 Sep** as
+  `+919281445083`. Use the **office voice line `+91 92814 45083`**.
 
   `+91 94936 36363` turned out to be the WhatsApp Cloud API number for WABA `102097146277644`,
   so it takes no ordinary call or SMS — exactly the case this step was written to catch. Worse,
