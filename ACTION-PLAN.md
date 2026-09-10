@@ -237,9 +237,23 @@ reading live URLs to check status codes, updating this file.
   business hours. **Brief whoever mans it before submitting:** Meta may place a verification
   call, and an unanswered or misdirected call fails the same way a wrong number does.
 
-- [ ] **4.3 App dashboard** — app `653496656184174` → Settings → Basic. Privacy Policy URL
-  `https://agrimall.io/privacy`, Terms of Service URL `https://agrimall.io/terms`. The app
-  cannot go Live without the privacy URL.
+- [x] **4.3 App dashboard** — done 10 Sep 2026. Privacy Policy URL `https://agrimall.io/privacy`
+  and Terms of Service URL `https://agrimall.io/terms`, set and confirmed after a page reload.
+
+  **The page is not where this file said.** It is the App Dashboard at
+  `developers.facebook.com/apps/653496656184174/settings/basic/` — *not* Business Manager →
+  Apps, which only shows the app as a business asset with its people assignments.
+
+  Terms of Service was not blank: it held `https://www.facebook.com/`, a leftover default.
+
+  **Still wrong on that page, left for a decision:**
+
+  | Field | Current | Suggested |
+  | --- | --- | --- |
+  | Data deletion instructions URL | `https://www.facebook.com/` | `https://agrimall.io/privacy#your-rights` — §9 covers erasure and gives the contact route |
+  | Contact email | `vin.sandeepreddy@gmail.com` | `agrimall@agrimall.io` — another Gmail in the Meta record |
+  | App domains | *(empty)* | `agrimall.io` |
+  | Category | *(empty)* | may be required before the app can go Live (5.2) |
 
 - [ ] **4.4 Submit** — Security Centre → Start Verification → India → Partnership → upload the
   GST REG-06 PDF, document type **GST certificate** → confirmation code by **email** to
