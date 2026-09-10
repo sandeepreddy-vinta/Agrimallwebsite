@@ -265,6 +265,18 @@ reading live URLs to check status codes, updating this file.
 
 - [ ] **4.5 Wait** — in progress. Watch `agrimall@agrimall.io` (spam included) and Security Centre.
 
+  **Automated site watch running.** Scheduled task `agrimall-verification-watch` runs
+  `scripts/verify-live.ps1` at 08:07, 13:07 and 19:07 local and reports. It stays quiet when the
+  site is green and is loud when it is not. It is under the freeze too: it reports problems and
+  recommends fixes, it does not deploy or edit anything.
+
+  Stored at `C:\Users\Sandeep\.claude\scheduled-tasks\agrimall-verification-watch\SKILL.md`,
+  managed from the **Scheduled** section in the sidebar. It only runs while the desktop app is
+  open; a run missed while closed happens at next launch. It cannot see Meta's verification
+  status — no Graph API token is wired up — so the outcome still arrives by email.
+
+  **Delete it once the outcome lands**, whichever way it goes.
+
   > ### FREEZE UNTIL THE OUTCOME LANDS
   >
   > Everything a reviewer compares is now consistent across the GST certificate, `company.ts`,
