@@ -21,7 +21,7 @@ the code for it exists. This file is the state; if a session loses context, it r
 | **Website half of verification** | **Done.** `verify-live.ps1` passes every check. |
 | Business Manager | Address field **blank**. Business phone undecided. |
 | Git | Pushed to `origin/main` at `e60162c` (4 Sep). |
-| Verification | **Not submitted — ON HOLD.** See below. |
+| Verification | **VERIFIED 10 Sep 2026.** Business portfolio `313946103063734`. |
 
 ### Fixed on 4 Sep while working through Phase 3
 
@@ -252,8 +252,8 @@ reading live URLs to check status codes, updating this file.
   | --- | --- | --- |
   | Data deletion instructions URL | `https://agrimall.io/privacy#your-rights` | **done** |
   | Contact email | `agrimall@agrimall.io` | **done** |
-  | App domains | *(still empty)* | set to `agrimall.io` |
-  | Category | *(still empty)* | pick **Business and pages** — likely required before 5.2 |
+  | App domains | `agrimall.io` | **done** 11 Sep |
+  | Category | Business and pages | **done** 11 Sep |
 
   The deletion URL needed a code fix to be worth anything: the fragment did not work.
   `src/components/ScrollToHash.tsx` fixes it — see the three bugs documented in that file, two of
@@ -263,40 +263,20 @@ reading live URLs to check status codes, updating this file.
 - [x] **4.4 Submit** — **submitted 10 Sep 2026.** Meta quoted ~2 business days, so an outcome is
   expected around **Mon 14 Sep 2026**; the documented range runs to 14 days (24 Sep).
 
-- [ ] **4.5 Wait** — in progress. Watch `agrimall@agrimall.io` (spam included) and Security Centre.
+- [x] **4.5 Wait** — **VERIFIED, dated 10 Sep 2026**, the same day as submission. Confirmed 11 Sep
+  in Business info ("Verified, Sep 10, 2026") and in the App Dashboard's Business portfolio
+  section. Business info now also carries **Tax ID `37AELFS0346C1Z5`**, matching the GSTIN.
 
-  **Automated site watch running.** Scheduled task `agrimall-verification-watch` runs
-  `scripts/verify-live.ps1` at 08:07, 13:07 and 19:07 local and reports. It stays quiet when the
-  site is green and is loud when it is not. It is under the freeze too: it reports problems and
-  recommends fixes, it does not deploy or edit anything.
+  The email-confirmation step went to `agrimall@agrimall.io` as planned. No separate "review
+  received" email was sent — status only ever showed in Business info and the App Dashboard.
 
-  Stored at `C:\Users\Sandeep\.claude\scheduled-tasks\agrimall-verification-watch\SKILL.md`,
-  managed from the **Scheduled** section in the sidebar. It only runs while the desktop app is
-  open; a run missed while closed happens at next launch. It cannot see Meta's verification
-  status — no Graph API token is wired up — so the outcome still arrives by email.
+  The review-window freeze is lifted. The scheduled site watch `agrimall-verification-watch` was
+  deleted 11 Sep; its prompt file remains under `C:/Users/Sandeep/.claude/scheduled-tasks/` but it
+  no longer runs.
 
-  **Delete it once the outcome lands**, whichever way it goes.
-
-  > ### FREEZE UNTIL THE OUTCOME LANDS
-  >
-  > Everything a reviewer compares is now consistent across the GST certificate, `company.ts`,
-  > the live site and Business Manager. **Any edit to those risks resetting or failing the
-  > review.** Until Security Centre reports an outcome:
-  >
-  > - **Do not deploy anything that touches entity details** — `src/config/company.ts` above all.
-  >   Unrelated fixes are fine only if `scripts/verify-live.ps1` still passes afterwards.
-  > - **Do not edit Business Manager → Business info**: legal name, address, phone, website.
-  > - **Do not unlink the primary page** or remove/re-add the business portfolio.
-  > - **Do not start domain verification, display-name approval or app review** in parallel. They
-  >   are listed below and after approval is soon enough.
-  > - **Keep `agrimall.io` up.** If the site 404s or goes down while a reviewer checks it, that
-  >   is a fail. `scripts/verify-live.ps1` is the check.
-  > - **Keep `+91 92814 45083` answerable** in business hours, not diverted or engaged. Brief
-  >   whoever mans it that a Meta verification call may come.
-  >
-  > Safe to do meanwhile: the two outstanding App Dashboard fields (App domains `agrimall.io`,
-  > Category **Business and pages**). They are app configuration and form no part of the
-  > business verification record — though waiting two days costs nothing either.
+  **Still worth keeping true:** the entity details on the site, in Business Manager and on the
+  GST certificate should go on agreeing. Verification is a snapshot, but a later mismatch can
+  prompt re-review. `scripts/verify-live.ps1` is still the check after any deploy.
 
 ## Phase 5 — After approval *(Sandeep)*
 
