@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adapa Messenger – Privacy Policy</title>
+<!-- Live at https://agrimall.io/adapa-messenger/privacy-policy.html. A copy sits in the website repo's
+     public/adapa-messenger/; update both. -->
+<style>
+  :root { color-scheme: light dark; --text: #1a1c20; --muted: #44474f; --bg: #ffffff; --rule: #e0e2ec; --accent: #2c5ea8; }
+  @media (prefers-color-scheme: dark) { :root { --text: #e2e2e9; --muted: #c4c6d0; --bg: #111318; --rule: #2e3036; --accent: #a9c7ff; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.8rem; line-height: 1.25; margin: 0 0 4px; }
+  h2 { font-size: 1.2rem; margin: 32px 0 8px; padding-top: 16px; border-top: 1px solid var(--rule); }
+  p, li { color: var(--text); }
+  .meta { color: var(--muted); margin: 0 0 24px; }
+  ul { padding-left: 1.2em; }
+  li { margin: 4px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px; border-bottom: 1px solid var(--rule); }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--accent); }
+  .table-wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Adapa Messenger – Privacy Policy</h1>
+  <p class="meta">Effective 17 October 2026</p>
+
+  <p>Adapa Messenger is the chat app Adapa Group's staff use to talk to each other at work: one-to-one
+  chats and groups, with text, photos, voice notes, PDFs, shared locations and contact cards. It is
+  distributed only to Adapa staff and is not offered to the public. This policy explains what
+  information the app handles, why, and the choices available. "We" and "Adapa" mean Adapa Group.</p>
+
+  <h2>Who can use the app</h2>
+  <p>Only Adapa employees who are currently active and belong to an Adapa team. Signing in needs a
+  mobile number registered by Adapa and a one-time password (OTP). The app is not meant for children.</p>
+
+  <h2>Information the app sends to Adapa</h2>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Information</th><th>Why</th></tr>
+    <tr><td>Your mobile number, and the one-time password you enter, when you sign in. Our server returns your name and a sign-in token, which the app keeps on the phone.</td><td>To check that you are active Adapa staff and keep you signed in.</td></tr>
+    <tr><td>What you send in a chat: text, photos, voice notes, PDFs, contact cards, and your location when you choose to share it. Also the names and descriptions of groups you create or change, and when each message was delivered to and read by the people in the chat.</td><td>To deliver your messages to the people you send them to, keep your chat history, and show delivered and read ticks.</td></tr>
+    <tr><td>Device details sent with each request: an Android device identifier, an identifier created by the app, the phone's make and model, Android version, app version, time zone and request time.</td><td>Security, support and keeping the app working on staff phones.</td></tr>
+    <tr><td>A push token from Google Firebase, the phone model, Android and app version, and whether notifications or battery optimisation are blocking messages on the phone.</td><td>To send you notifications of new messages, and to see which phones will not receive them on time.</td></tr>
+  </table>
+  </div>
+
+  <h2>What you send, and who sees it</h2>
+  <ul>
+    <li><strong>Messages</strong> are seen by the people in the chat or group. Someone who joins a group later
+      sees only what is sent after they join. The sender and a group's admins can see who has read a message.</li>
+    <li><strong>Photos</strong> are reduced in size on the phone before they are sent. <strong>Voice notes</strong>
+      are recorded only while you hold the microphone button. <strong>PDFs</strong> are the files you pick.</li>
+    <li><strong>Location</strong> is sent only when you tap Location in a chat and confirm. It is a single
+      point (latitude, longitude and accuracy) at that moment; the app does not track you or use your
+      location in the background.</li>
+    <li><strong>Contact cards</strong> share a colleague, farmer or dealer who is already in Adapa's records,
+      with their name and phone number. The app does not read your phone's contacts.</li>
+    <li><strong>Staff directory:</strong> other staff see your name, photo, department, teams and the phone
+      numbers Adapa holds for you (your company number and your registered mobile number), so they can
+      find, message and call you.</li>
+    <li><strong>Delete for everyone</strong> removes your message from everyone's chat within an hour of
+      sending it. Adapa keeps the original text in its audit log; it is not shown in the app.</li>
+  </ul>
+  <p>Messages are not end-to-end encrypted. They are stored on Adapa's servers, and Adapa may access
+  them for business, security, investigation and legal purposes. Use the app for work.</p>
+
+  <h2>Where files are stored</h2>
+  <p>Photos, voice notes and PDFs are stored in a private Amazon Web Services (AWS) S3 storage bucket in
+  Mumbai, India (region ap-south-1). The bucket is encrypted and closed to the public. The app uploads and
+  downloads each file through a link that our server signs for that one file; a download link expires
+  after 15 minutes.</p>
+
+  <h2>Information that stays on your phone</h2>
+  <ul>
+    <li><strong>Chats and files</strong>: the app keeps a copy of your chats, the staff directory, and the
+      photos, voice notes and PDFs you send or open, in its own private storage. They are excluded from
+      Android backups and phone-to-phone transfers.</li>
+    <li><strong>Signing in</strong>: Android can offer your SIM's own number, and, after you tap Allow, hand
+      the app the one SMS that carries the OTP. The app has no permission to read your SMS.</li>
+    <li><strong>Settings</strong>: your sign-in, your settings and which chats you have read.</li>
+  </ul>
+  <p>Signing out deletes the chats, messages and files from the phone. Everything is removed when the app
+  is uninstalled.</p>
+
+  <h2>Sign-out and wipe by Adapa</h2>
+  <p>Adapa's Messenger admins can sign a person out of Adapa's staff apps; the Messenger then deletes its
+  chats and files from that person's phone, and the person can sign in again with an OTP. When an employee
+  leaves Adapa or is no longer active, the same happens automatically, they are removed from their groups,
+  and they can no longer sign in. Each of these actions is recorded in the audit log.</p>
+
+  <h2>Push notifications and crash reports (Google Firebase)</h2>
+  <p>New-message notifications are delivered through Google Firebase Cloud Messaging. Each one carries the
+  chat's name, the sender's name and the first 120 characters of the message, which the app shows as a
+  notification. If your phone hides sensitive content on the lock screen, it shows only "New message"
+  there. If the app crashes, Google
+  Firebase Crashlytics sends a crash report with technical details (for example the phone model, Android
+  version and where in the app the error happened), which we use only to fix problems. The app does not
+  use Google Analytics or the advertising ID, and shows no ads. Google processes this data under
+  <a href="https://firebase.google.com/support/privacy">Firebase's privacy and security terms</a>.</p>
+
+  <h2>Phone permissions</h2>
+  <ul>
+    <li><strong>Notifications</strong>: to show new messages.</li>
+    <li><strong>Microphone</strong>: to record voice notes, asked the first time you record one.</li>
+    <li><strong>Location</strong>: to share your location in a chat, asked the first time you share it. Never
+      used in the background.</li>
+  </ul>
+  <p>The app has no camera, photo, file, contacts, phone or SMS permission. Taking a photo opens your
+  phone's camera app; choosing a photo or a PDF opens Android's own picker, and the app receives only the
+  item you pick. The Call button hands the number to Adapa Dialer or your phone app. A first-run checklist
+  asks you to turn off battery optimisation and, on some phones, allow autostart, so that messages arrive
+  on time; these are phone settings and send no extra information.</p>
+
+  <h2>Sharing</h2>
+  <p>We do not sell personal information or use it for advertising. Apart from the people you message, we
+  share it only with service providers that work for us: Amazon Web Services for servers and file storage,
+  and Google Firebase for notifications and crash reports. We may also disclose information when the law
+  requires it.</p>
+
+  <h2>Security and retention</h2>
+  <p>Information sent by the app travels over encrypted HTTPS connections. Release versions of the app do
+  not write network traffic to the phone's logs. The audit log records group changes, deletions and admin
+  actions, with the person, the time, the phone's identifier and its network (IP) address. We keep:</p>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Information</th><th>Kept for</th></tr>
+    <tr><td>Chat messages</td><td>2 years</td></tr>
+    <tr><td>Photos and PDFs</td><td>2 years</td></tr>
+    <tr><td>Voice notes</td><td>1 year</td></tr>
+    <tr><td>Delivered and read marks for each person</td><td>90 days</td></tr>
+    <tr><td>Audit log</td><td>Permanently</td></tr>
+    <tr><td>Account information</td><td>While you work with Adapa, and afterwards as the law requires</td></tr>
+  </table>
+  </div>
+
+  <h2 id="your-rights">Your rights</h2>
+  <p>Under India's Digital Personal Data Protection Act, 2023, you can ask to see, correct or erase your
+  personal data, withdraw consent where processing is based on consent, and raise a grievance. Contact us
+  using the details below. Messages you sent stay in the chats of the people you sent them to, and Adapa
+  keeps business records and the audit log for the periods above or as the law requires; we erase or
+  anonymise the rest. You can also stop the app collecting anything by signing out and uninstalling it.</p>
+
+  <h2>Contact and grievance officer</h2>
+  <p>Sandeep Reddy Vinta<br>
+  Sree Mohan Agri Mall (Adapa Group), 15/164, Balaji Complex, Gosha Hospital Road, Basement Part A, Part B and First Floor Part G, Adoni – 518301, Andhra Pradesh, India<br>
+  Email: <a href="mailto:agrimall@agrimall.io">agrimall@agrimall.io</a></p>
+
+  <h2>Changes to this policy</h2>
+  <p>We will update this page when the app's handling of information changes, and change the
+  effective date above.</p>
+</main>
+</body>
+</html>
