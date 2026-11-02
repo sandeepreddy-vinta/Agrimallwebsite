@@ -1,3 +1,5 @@
+@AGENTS.md
+
 # Agrimall Website — agrimall.io
 
 Public marketing site and legal pages for **Sree Mohan Agri Mall**. Vite + React 18 +
